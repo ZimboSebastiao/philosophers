@@ -35,10 +35,10 @@ typedef struct s_philo
 }	t_philo;
 
 int		parse_args(int argc, char **argv, t_data *data);
-int		init_data(t_data *data, t_philo *philos, pthread_mutex_t **forks);
+int		init_data(t_data *data, t_philo **philos, pthread_mutex_t **forks);
 void	create_threads(t_data *data, t_philo *philos);
 void	*philo_routine(void *arg);
-void	*monitor_routine(void *arg),
+void	*monitor_routine(void *arg);
 
 long	get_time(void);
 void	ft_sleep(long time);
