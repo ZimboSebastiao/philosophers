@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 01:30:08 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/05 01:30:14 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/05 02:16:40 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				meals_eaten;
-	long			last_meal_timee;
+	long			last_meal_time;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -53,7 +53,7 @@ void	*philo_routine(void *arg);
 void	*monitor_routine(void *arg);
 
 long	get_time(void);
-void	ft_sleep(long time);
+void	ft_usleep(long time);
 void	print_status(t_philo *philo, char *status);
 void	cleanup(t_data *data, t_philo *philos, pthread_mutex_t *forks);
 
@@ -61,5 +61,6 @@ void	take_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	think(t_philo *philo);
+int		ft_atoi(const char *nptr);
 
 #endif

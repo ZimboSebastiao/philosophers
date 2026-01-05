@@ -11,7 +11,8 @@ SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/threads.c \
 	   $(SRC_DIR)/utils.c \
 	   $(SRC_DIR)/actions.c \
-	   $(SRC_DIR)/monitor.c
+	   $(SRC_DIR)/monitor.c \
+	   $(SRC_DIR)/ft_atoi.c
 
 OBJ_DIR = objs
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
