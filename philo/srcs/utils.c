@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 02:29:12 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/05 02:38:54 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/07 02:33:04 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ long	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return(tv.tv_sec * 1000 + tv.tv_sec / 1000);
+	return (tv.tv_sec * 1000 + tv.tv_sec / 1000);
 }
 
 void	ft_usleep(long time)
 {
-	long start;
+	long	start;
 
 	start = get_time();
-	while(get_time() - start < time)
+	while (get_time() - start < time)
 		usleep(100);
 }
 
 void	print_status(t_philo *philo, char *status)
 {
-	long time;
+	long	time;
 
 	pthread_mutex_lock(&philo->data->print_lock);
 	pthread_mutex_lock(&philo->data->death_lock);
