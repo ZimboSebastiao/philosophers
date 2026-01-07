@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 02:29:12 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 02:49:38 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/07 04:22:35 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long	get_time(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_sec / 1000);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 void	ft_usleep(long time)
@@ -64,13 +64,22 @@ void	cleanup(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 
 int	check_philo_death(t_philo *philo)
 {
-	if (get_time() - philo->last_meal_time > philo->data->time_to_die)
+	long	current_time;
+
+	current_time = get_time();
+	if (current_time - philo->last_meal_time > philo->data->time_to_die)
 	{
-		pthread_mutex_unlock(&philo->data->meal_lock);
 		pthread_mutex_lock(&philo->data->death_lock);
-		philo->data->someone_died = true;
-		pthread_mutex_unlock(&philo->data->death_lock);
-		print_status(philo, "died");
+		if (!philo->data->someone_died)
+		{
+			philo->data->someone_died = true;
+			pthread_mutex_unlock(&philo->data->death_lock);
+			print_status(philo, "died");
+		}
+		else
+		{
+			pthread_mutex_unlock(&philo->data->death_lock);
+		}
 		return (1);
 	}
 	return (0);
