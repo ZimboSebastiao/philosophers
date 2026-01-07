@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 01:29:51 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 02:26:13 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/07 02:40:32 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 	{
-		printf("Use: %s num_philos time_to_die
+		printf("Use: %s num_philos time_to_die \
 			time_to_eat time_to_sleep ", argv[0]);
 		printf("[num_must_eat]\n");
 		return (1);

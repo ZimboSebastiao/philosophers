@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 02:29:12 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 02:33:04 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/07 02:49:38 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,18 @@ void	cleanup(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 	pthread_mutex_destroy(&data->print_lock);
 	pthread_mutex_destroy(&data->death_lock);
 	pthread_mutex_destroy(&data->meal_lock);
+}
+
+int	check_philo_death(t_philo *philo)
+{
+	if (get_time() - philo->last_meal_time > philo->data->time_to_die)
+	{
+		pthread_mutex_unlock(&philo->data->meal_lock);
+		pthread_mutex_lock(&philo->data->death_lock);
+		philo->data->someone_died = true;
+		pthread_mutex_unlock(&philo->data->death_lock);
+		print_status(philo, "died");
+		return (1);
+	}
+	return (0);
 }

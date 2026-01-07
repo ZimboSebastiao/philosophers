@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 01:30:08 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 02:19:00 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/07 02:49:20 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void	eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	think(t_philo *philo);
 int		ft_atoi(const char *nptr);
+int		check_philo_death(t_philo *philo);
 
 #endif
