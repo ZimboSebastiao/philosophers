@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 01:32:50 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 04:20:45 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/08 23:38:09 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parse_args(int argc, char **argv, t_data *data)
 	if (argc == 6)
 		data->num_must_eat = ft_atoi(argv[5]);
 	if (data->num_philos <= 0 || data->time_to_die <= 0
-		|| data->time_to_eat <= 0 || data->time_to_die <= 0)
+		|| data->time_to_eat <= 0 || data->time_to_sleep <= 0)
 	{
 		printf("Error: Arguments should be based on positive numbers.\n");
 		return (0);
