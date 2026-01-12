@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 01:54:11 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 02:31:50 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/12 00:24:21 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	*philo_routine(void *arg)
 		}
 		pthread_mutex_unlock(&philo->data->death_lock);
 		take_forks(philo);
+		if (philo->data->num_philos == 1)
+		{
+			pthread_mutex_unlock(philo->left_fork);
+			break ;
+		}
 		eat(philo);
 		philo_sleep(philo);
 		think(philo);
