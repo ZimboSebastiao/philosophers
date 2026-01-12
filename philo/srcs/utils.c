@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 02:29:12 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/07 04:22:35 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/12 01:19:47 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,21 @@ long	get_time(void)
 void	ft_usleep(long time)
 {
 	long	start;
+	long	elapsed;
+	long	remaining;
 
 	start = get_time();
-	while (get_time() - start < time)
-		usleep(100);
+	while (1)
+	{
+		elapsed = get_time() - start;
+		remaining = time - elapsed;
+		if (remaining <= 0)
+			break ;
+		if (remaining > 100)
+			usleep(100 * 1000);
+		else
+			usleep(remaining * 1000);
+	}
 }
 
 void	print_status(t_philo *philo, char *status)

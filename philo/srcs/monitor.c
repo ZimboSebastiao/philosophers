@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 02:16:58 by zimbo             #+#    #+#             */
-/*   Updated: 2026/01/08 22:44:25 by zimbo            ###   ########.fr       */
+/*   Updated: 2026/01/12 00:44:12 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,13 @@ static int	check_single_philo(t_data *data, t_philo *philos,
 	died = check_philo_death(&philos[i]);
 	if (!died)
 		check_all_full(&philos[i], all_full);
+	else
+	{
+		pthread_mutex_unlock(&data->meal_lock);
+		return (1);
+	}
 	pthread_mutex_unlock(&data->meal_lock);
-	return (died);
+	return (0);
 }
 
 static int	check_all_philos(t_data *data, t_philo *philos, int *all_full)
